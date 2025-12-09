@@ -97,11 +97,19 @@ class PilaLetras{
         return letras;
     }
     
-    
-    
 }// clase pilas letras
 
-
+class ArchivoPalabras{
+	
+	private String nombreArchivos
+	
+	public ArchivoPalabras(String nombreArchivo) {
+		this.nombreArchivos = nombreArchivos;
+	}
+	
+	
+	
+}// archivo palabras
 
 
 
