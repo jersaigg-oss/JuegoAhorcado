@@ -202,6 +202,21 @@ class JuegoAhorcado{
         int indice = rand.nextInt(palabras.length);
         return palabras[indice];
     }// random oalabra
+    
+    public boolean seAdivinoLaPalabra(String palabraSecreta, char[] letrasIngresadas) {
+        for (int i = 0; i < palabraSecreta.length(); i++) {
+            char letra = palabraSecreta.charAt(i);
+            boolean encontrada = false;
+            for (char l : letrasIngresadas) {
+                if (l == letra) {
+                    encontrada = true;
+                    break;
+                }
+            }
+            if (!encontrada) return false;
+        }
+        return true;
+    }//verificador de la palabra
 	
 	
 	
