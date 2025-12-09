@@ -178,6 +178,24 @@ class ArchivoPalabras{
 	
 }// archivo palabras
 
+class JuegoAhorcado{
+	
+	private String palabraSecreta;
+    private PilaLetras letrasIngresadas;
+    private Oportunidades oportunidades;
+    private ArchivoPalabras archivo;
+
+    
+    public JuegoAhorcado(ArchivoPalabras archivo, int maxIntentos) {
+        this.archivo = archivo;
+        this.oportunidades = new Oportunidades(maxIntentos);
+        this.letrasIngresadas = new PilaLetras(50); // capacidad suficiente
+    }
+	
+	
+	
+}// clase juego ahorcado
+
 
 
 
