@@ -89,6 +89,15 @@ class PilaLetras{
     }
     
     
+    public char[] obtenerLetras() {
+        char[] letras = new char[tope + 1];
+        for (int i = 0; i <= tope; i++) {
+            letras[i] = elementos[i];
+        }
+        return letras;
+    }
+    
+    
     
 }// clase pilas letras
 
