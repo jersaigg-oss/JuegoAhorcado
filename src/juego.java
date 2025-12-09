@@ -52,6 +52,8 @@ class PilaLetras{
         }
     }
     
+    
+    
     public char pop() {
         if (!isEmpty()) {
             char letra = elementos[tope];
@@ -72,6 +74,22 @@ class PilaLetras{
         }
     }
 	
+    public boolean isEmpty() {
+        return tope == -1;
+    }
+
+    
+    public boolean contiene(char letra) {
+        for (int i = 0; i <= tope; i++) {
+            if (elementos[i] == letra) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    
 }// clase pilas letras
 
 
