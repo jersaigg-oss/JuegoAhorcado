@@ -42,6 +42,15 @@ class PilaLetras{
         elementos = new char[capacidad];
         tope = -1; // Pila vacía
     }
+    
+    public void push(char letra) {
+        if (tope < elementos.length - 1) {
+            tope++;
+            elementos[tope] = letra;
+        } else {
+            System.out.println("No se puede insertar mas letras, esta llena la pila. ");
+        }
+    }
 	
 }// clase pilas letras
 
