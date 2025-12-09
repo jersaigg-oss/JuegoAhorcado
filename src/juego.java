@@ -149,6 +149,30 @@ class ArchivoPalabras{
         }
     }// borrar archivo
 	
+	public void ordenarPalabras(String[] palabras) {
+        // Algoritmo de ordenamiento burbuja
+        for (int i = 0; i < palabras.length - 1; i++) {
+            for (int j = 0; j < palabras.length - i - 1; j++) {
+                if (palabras[j].compareTo(palabras[j + 1]) > 0) {
+                    // Intercambiar
+                    String temp = palabras[j];
+                    palabras[j] = palabras[j + 1];
+                    palabras[j + 1] = temp;
+                }
+            }
+        }
+
+        // Guardar las palabras ordenadas en el archivo
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (String palabra : palabras) {
+                bw.write(palabra);
+                bw.newLine();
+            }
+            System.out.println("Palabras ordenadas y guardadas.");
+        } catch (IOException e) {
+            System.out.println("Error al ordenar y guardar palabras: " + e.getMessage());
+        }
+    }// ordenar palabras
 	
 	
 	
