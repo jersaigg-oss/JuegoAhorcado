@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -126,7 +128,16 @@ class ArchivoPalabras{
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
         return listaPalabras.toArray(new String[0]);
-    }
+    }// leer archivo
+	
+	public void guardarPalabra(String palabra) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivos, true))) {
+            bw.write(palabra.toUpperCase());
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Error al guardar la palabra: " + e.getMessage());
+        }
+    }// guardar palabra
 	
 	
 	
