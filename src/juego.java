@@ -26,7 +26,11 @@ class Oportunidades{
 
     public int getMaxIntentos() {return maxIntentos;}
     
-	
+    @Override
+    public String toString() {
+        return "Te quedan " + intentosRestantes + " oportunidades de " + maxIntentos + ". ";
+    }
+
 }// clase oportunidades
 
 
