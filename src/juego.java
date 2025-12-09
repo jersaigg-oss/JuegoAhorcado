@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 class Oportunidades{
 	
@@ -196,6 +197,11 @@ class JuegoAhorcado{
         return archivo.leerArchivo();
     }
     
+    public String elegirPalabra(String[] palabras) {
+        Random rand = new Random();
+        int indice = rand.nextInt(palabras.length);
+        return palabras[indice];
+    }// random oalabra
 	
 	
 	
