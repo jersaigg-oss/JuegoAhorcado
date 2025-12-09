@@ -217,6 +217,29 @@ class JuegoAhorcado{
         }
         return true;
     }//verificador de la palabra
+    
+    
+    public String obtenerPalabraAdivinada(String palabraSecreta, char[] letrasIngresadas) {
+        StringBuilder resultado = new StringBuilder();
+        for (int i = 0; i < palabraSecreta.length(); i++) {
+            char letra = palabraSecreta.charAt(i);
+            boolean encontrada = false;
+            for (char l : letrasIngresadas) {
+                if (l == letra) {
+                    encontrada = true;
+                    break;
+                }
+            }
+            if (encontrada) {
+                resultado.append(letra);
+            } else {
+                resultado.append("_");
+            }
+            resultado.append(" ");
+        }
+        return resultado.toString();
+    }//mostrar palabra con guiones
+    
 	
 	
 	
