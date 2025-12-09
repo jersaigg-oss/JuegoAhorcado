@@ -33,6 +33,22 @@ class Oportunidades{
 
 }// clase oportunidades
 
+class PilaLetras{
+	
+	private char[] elementos;  
+    private int tope;          
+
+    public PilaLetras(int capacidad) {
+        elementos = new char[capacidad];
+        tope = -1; // Pila vacía
+    }
+	
+}// clase pilas letras
+
+
+
+
+
 
 public class juego {
 	public static void main(String[] args) {
