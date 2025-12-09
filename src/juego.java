@@ -140,6 +140,17 @@ class ArchivoPalabras{
     }// guardar palabra
 	
 	
+	public void borrarArchivo() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            
+            System.out.println("Archivo borrado y creado nuevamente vacío.");
+        } catch (IOException e) {
+            System.out.println("Error al borrar el archivo: " + e.getMessage());
+        }
+    }// borrar archivo
+	
+	
+	
 	
 }// archivo palabras
 
