@@ -62,6 +62,15 @@ class PilaLetras{
             return ' ';
         }
     }
+    
+    public char peek() {
+        if (!isEmpty()) {
+            return elementos[tope];
+        } else {
+            System.out.println("La pila está vacía.");
+            return ' ';
+        }
+    }
 	
 }// clase pilas letras
 
