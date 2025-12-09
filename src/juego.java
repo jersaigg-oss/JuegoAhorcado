@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 class Oportunidades{
 	
@@ -101,11 +106,27 @@ class PilaLetras{
 
 class ArchivoPalabras{
 	
-	private String nombreArchivos
+	private String nombreArchivos;
 	
-	public ArchivoPalabras(String nombreArchivo) {
+	public ArchivoPalabras(String nombreArchivos) {
 		this.nombreArchivos = nombreArchivos;
 	}
+	
+	public String[] leerArchivo() {
+        List<String> listaPalabras = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                
+            	
+                listaPalabras.add(linea.trim().toUpperCase());
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+        return listaPalabras.toArray(new String[0]);
+    }
 	
 	
 	
