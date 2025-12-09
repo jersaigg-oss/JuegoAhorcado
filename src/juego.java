@@ -15,6 +15,16 @@ class Oportunidades{
         }
     }
     
+    public void reiniciar() {
+        intentosRestantes = maxIntentos;
+    }
+
+    
+    public int getIntentosRestantes() {return intentosRestantes;}
+    
+    public boolean quedanOportunidades() {return intentosRestantes > 0;}
+
+    public int getMaxIntentos() {return maxIntentos;}
     
 	
 }// clase oportunidades
