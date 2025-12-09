@@ -51,6 +51,17 @@ class PilaLetras{
             System.out.println("No se puede insertar mas letras, esta llena la pila. ");
         }
     }
+    
+    public char pop() {
+        if (!isEmpty()) {
+            char letra = elementos[tope];
+            tope--;
+            return letra;
+        } else {
+            System.out.println("La pila está vacía.");
+            return ' ';
+        }
+    }
 	
 }// clase pilas letras
 
