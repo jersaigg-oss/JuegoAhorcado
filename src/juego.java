@@ -8,6 +8,14 @@ class Oportunidades{
         this.maxIntentos = maxIntentos;
         this.intentosRestantes = maxIntentos;
     }
+    
+    public void perderOportunidad() {
+        if (intentosRestantes > 0) {
+            intentosRestantes--;
+        }
+    }
+    
+    
 	
 }// clase oportunidades
 
