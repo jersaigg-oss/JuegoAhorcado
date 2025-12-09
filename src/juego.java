@@ -191,6 +191,11 @@ class JuegoAhorcado{
         this.oportunidades = new Oportunidades(maxIntentos);
         this.letrasIngresadas = new PilaLetras(50); // capacidad suficiente
     }
+    
+    public String[] cargarPalabras() {
+        return archivo.leerArchivo();
+    }
+    
 	
 	
 	
