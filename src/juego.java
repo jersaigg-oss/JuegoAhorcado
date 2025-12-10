@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 class Oportunidades{
 	
@@ -142,7 +143,7 @@ class ArchivoPalabras{
 	
 	
 	public void borrarArchivo() {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivos))) {
             
             System.out.println("Archivo borrado y creado nuevamente vacío.");
         } catch (IOException e) {
@@ -164,7 +165,7 @@ class ArchivoPalabras{
         }
 
         // Guardar las palabras ordenadas en el archivo
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivos))) {
             for (String palabra : palabras) {
                 bw.write(palabra);
                 bw.newLine();
@@ -185,7 +186,7 @@ class JuegoAhorcado{
     private PilaLetras letrasIngresadas;
     private Oportunidades oportunidades;
     private ArchivoPalabras archivo;
-
+    
     
     public JuegoAhorcado(ArchivoPalabras archivo, int maxIntentos) {
         this.archivo = archivo;
@@ -217,8 +218,7 @@ class JuegoAhorcado{
         }
         return true;
     }//verificador de la palabra
-    
-    
+       
     public String obtenerPalabraAdivinada(String palabraSecreta, char[] letrasIngresadas) {
         StringBuilder resultado = new StringBuilder();
         for (int i = 0; i < palabraSecreta.length(); i++) {
@@ -239,16 +239,76 @@ class JuegoAhorcado{
         }
         return resultado.toString();
     }//mostrar palabra con guiones
+     
+    public String obtenerLetrasDisponibles(char[] letrasIngresadas) {
+    	
+        String alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        StringBuilder disponibles = new StringBuilder();
+        
+        for (int i = 0; i < alfabeto.length(); i++) {
+            char letra = alfabeto.charAt(i);
+            boolean usada = false;
+            for (char l : letrasIngresadas) {
+                if (l == letra) {
+                    usada = true;
+                    break;
+                }
+            }
+            if (!usada) disponibles.append(letra);
+        }
+        return disponibles.toString();
+    }// letras disponibles
+	
+    public void inicioAhorcado(String palabraSecreta) {
+        this.palabraSecreta = palabraSecreta;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Bienvenido al juego del Ahorcado!");
+        System.out.println("Estoy pensando en una palabra de " + palabraSecreta.length() + " letras.");
+        System.out.println("------------");
+
+        while (oportunidades.quedanOportunidades() && 
+               !seAdivinoLaPalabra(palabraSecreta, letrasIngresadas.obtenerLetras())) {
+
+            System.out.println(oportunidades);
+            System.out.println("Letras disponibles: " + obtenerLetrasDisponibles(letrasIngresadas.obtenerLetras()));
+            System.out.print("Por favor ingresa una letra: ");
+            char letra = sc.next().toUpperCase().charAt(0);
+
+            if (letrasIngresadas.contiene(letra)) {
+                System.out.println("Letra ya ingresada ingrese otra letra: " + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
+            } else {
+                letrasIngresadas.push(letra);
+                if (palabraSecreta.indexOf(letra) >= 0) {
+                    System.out.println("Bien hecho: " + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
+                } else {
+                    oportunidades.perderOportunidad();
+                    System.out.println("Letra incorrecta vuelva a intentarlo: " + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
+                }
+            }
+            System.out.println("------------");
+        }
+
+        if (seAdivinoLaPalabra(palabraSecreta, letrasIngresadas.obtenerLetras())) {
+            System.out.println("¡Felicidades, has GANADO!");
+        } else {
+            System.out.println("Perdiste, sin oportunidades restantes.");
+            System.out.println("La palabra secreta era: " + palabraSecreta);
+        }
+    }// inicio juego ahorcado
     
-	
-	
-	
+
+    
+    
 }// clase juego ahorcado
 
 
 
 
 public class juego {
+	
+	
+	
 	public static void main(String[] args) {
 		
 	}// main
