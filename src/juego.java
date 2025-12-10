@@ -182,8 +182,14 @@ class ArchivoPalabras{
 
 class JuegoAhorcado{
 	
-	private String palabraSecreta;
-    private PilaLetras letrasIngresadas; 
+	String reset="\u001B[0m";
+	String green="\033[32m";
+	String yellow="\033[33m";
+	String blue="\033[34m"; 
+	String red="\033[31m";
+	String cyan="\033[36m"; 
+	
+	private PilaLetras letrasIngresadas; 
     private Oportunidades oportunidades;
     private ArchivoPalabras archivo;
     
@@ -260,10 +266,9 @@ class JuegoAhorcado{
     }// letras disponibles
 	
     public void inicioAhorcado(String palabraSecreta) {
-        this.palabraSecreta = palabraSecreta;
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Bienvenido al juego del Ahorcado!");
+        System.out.println(green +"Bienvenido al juego del Ahorcado!" + reset);
         System.out.println("Estoy pensando en una palabra de " + palabraSecreta.length() + " letras.");
         System.out.println("------------");
 
@@ -272,7 +277,7 @@ class JuegoAhorcado{
 
             System.out.println(oportunidades);
             System.out.println("Letras disponibles: " + obtenerLetrasDisponibles(letrasIngresadas.obtenerLetras()));
-            System.out.print("Por favor ingresa una letra: ");
+            System.out.print(yellow + "Por favor ingresa una letra: " + reset);
             
             char letra = sc.next().toUpperCase().charAt(0);
 
@@ -284,16 +289,16 @@ class JuegoAhorcado{
                     System.out.println("Bien hecho: " + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
                 } else {
                     oportunidades.perderOportunidad();
-                    System.out.println("Letra incorrecta vuelva a intentarlo: " + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
+                    System.out.println(red + "Letra incorrecta vuelva a intentarlo: " + reset  + obtenerPalabraAdivinada(palabraSecreta, letrasIngresadas.obtenerLetras()));
                 }
             }
-            System.out.println("------------");
+            System.out.println(cyan + "------------" + reset);
         }
 
         if (seAdivinoLaPalabra(palabraSecreta, letrasIngresadas.obtenerLetras())) {
-            System.out.println("¡Felicidades, has GANADO!");
+            System.out.println(green +"¡Felicidades, has GANADO!" + reset);
         } else {
-            System.out.println("Perdiste, sin oportunidades restantes.");
+            System.out.println(red + "Perdiste, sin oportunidades restantes." + reset);
             System.out.println("La palabra secreta era: " + palabraSecreta);
         }
         
