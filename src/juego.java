@@ -385,7 +385,8 @@ public class juego {
 
 	public static void main(String[] args) {
 		
-		
+		JuegoAhorcado ja = new JuegoAhorcado(null, 0);
+		ja.menuOpciones();
 		
 		
 		
