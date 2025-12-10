@@ -152,28 +152,42 @@ class ArchivoPalabras{
     }// borrar archivo
 	
 	public void ordenarPalabras(String[] palabras) {
-        // Algoritmo de ordenamiento burbuja
-        for (int i = 0; i < palabras.length - 1; i++) {
-            for (int j = 0; j < palabras.length - i - 1; j++) {
-                if (palabras[j].compareTo(palabras[j + 1]) > 0) {
-                    // Intercambiar
-                    String temp = palabras[j];
-                    palabras[j] = palabras[j + 1];
-                    palabras[j + 1] = temp;
-                }
+        quickSort(palabras, 0, palabras.length - 1);
+    }
+
+    // Método QuickSort
+    private void quickSort(String[] arr, int low, int high) {
+        if (low < high) {
+            int pi = partition(arr, low, high);
+
+            
+            quickSort(arr, low, pi - 1);
+            quickSort(arr, pi + 1, high);
+        }
+    }
+
+    private int partition(String[] arr, int low, int high) {
+        String pivot = arr[high]; 
+        int i = (low - 1); 
+
+        for (int j = low; j < high; j++) {
+           
+            if (arr[j].compareTo(pivot) <= 0) {
+                i++;
+
+                
+                String temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
             }
         }
 
-        // Guardar las palabras ordenadas en el archivo
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivos))) {
-            for (String palabra : palabras) {
-                bw.write(palabra);
-                bw.newLine();
-            }
-            System.out.println("Palabras ordenadas y guardadas.");
-        } catch (IOException e) {
-            System.out.println("Error al ordenar y guardar palabras: " + e.getMessage());
-        }
+        
+        String temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+
+        return i + 1;
     }// ordenar palabras
 	
 	
@@ -298,7 +312,7 @@ class JuegoAhorcado{
         if (seAdivinoLaPalabra(palabraSecreta, letrasIngresadas.obtenerLetras())) {
             System.out.println(green +"¡Felicidades, has GANADO!" + reset);
         } else {
-            System.out.println(red + "Perdiste, sin oportunidades restantes." + reset);
+            System.out.println(red + "Perdiste, sin oportunidades restantes." +reset);
             System.out.println("La palabra secreta era: " + palabraSecreta);
         }
         
