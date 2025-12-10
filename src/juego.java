@@ -183,7 +183,7 @@ class ArchivoPalabras{
 class JuegoAhorcado{
 	
 	private String palabraSecreta;
-    private PilaLetras letrasIngresadas;
+    private PilaLetras letrasIngresadas; 
     private Oportunidades oportunidades;
     private ArchivoPalabras archivo;
     
