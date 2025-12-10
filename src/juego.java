@@ -273,6 +273,7 @@ class JuegoAhorcado{
             System.out.println(oportunidades);
             System.out.println("Letras disponibles: " + obtenerLetrasDisponibles(letrasIngresadas.obtenerLetras()));
             System.out.print("Por favor ingresa una letra: ");
+            
             char letra = sc.next().toUpperCase().charAt(0);
 
             if (letrasIngresadas.contiene(letra)) {
@@ -295,6 +296,7 @@ class JuegoAhorcado{
             System.out.println("Perdiste, sin oportunidades restantes.");
             System.out.println("La palabra secreta era: " + palabraSecreta);
         }
+        
     }// inicio juego ahorcado
     
 
