@@ -299,19 +299,7 @@ class JuegoAhorcado{
         
     }// inicio juego ahorcado
     
-
-    
-    
-}// clase juego ahorcado
-
-
-
-
-public class juego {
-	
-	
-	
-	Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
     private static final String NOMBRE_ARCHIVO = "palabras.txt";
 	
     public void menuOpciones() {
@@ -344,7 +332,7 @@ public class juego {
                     jugar(archivo);
                     break;
                 case 5:
-                    System.out.println("Saliendo...");
+                    System.out.println("Saliendo.");
                     break;
                 default:
                     System.out.println("Opción inválida.");
@@ -355,9 +343,51 @@ public class juego {
     
     }
     
+ 
+    private void verificarArchivo(ArchivoPalabras archivo) {
+        String[] palabras = archivo.leerArchivo();
+        System.out.println("Se encontraron " + palabras.length + " palabras en el archivo.");
+    }// Opción 1: Verificar archivo
+
+    
+    private void llenarArchivo(ArchivoPalabras archivo, Scanner sc) {
+        System.out.println("Ingresa palabras (escribe 'FIN' para terminar):");
+        String palabra;
+        do {
+            palabra = sc.nextLine();
+            if (!palabra.equalsIgnoreCase("FIN")) {
+                archivo.guardarPalabra(palabra);
+            }
+        } while (!palabra.equalsIgnoreCase("FIN"));
+    }// Opción 2: Llenar archivo con palabras
+
+    
+    private void jugar(ArchivoPalabras archivo) {
+        String[] palabras = archivo.leerArchivo();
+        if (palabras.length == 0) {
+            System.out.println("El archivo está vacío. Debes llenarlo primero.");
+            return;
+        }
+        JuegoAhorcado juego = new JuegoAhorcado(archivo, 8);
+        String palabra = juego.elegirPalabra(palabras);
+        juego.inicioAhorcado(palabra);
+    }// Opción 4: Jugar
+    
+    
+    
+}// clase juego ahorcado
+
+
+
+
+public class juego {
 	
 
 	public static void main(String[] args) {
+		
+		
+		
+		
 		
 	}// main
 
