@@ -311,6 +311,18 @@ public class juego {
 	
 	
 	
+	Scanner sc = new Scanner(System.in);
+    private static final String NOMBRE_ARCHIVO = "palabras.txt";
+	
+    public void menuOpciones() {
+        Scanner sc = new Scanner(System.in);
+        ArchivoPalabras archivo = new ArchivoPalabras(NOMBRE_ARCHIVO);
+        int opcion;
+        
+    
+    }
+	
+
 	public static void main(String[] args) {
 		
 	}// main
