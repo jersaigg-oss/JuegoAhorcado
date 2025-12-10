@@ -319,8 +319,42 @@ public class juego {
         ArchivoPalabras archivo = new ArchivoPalabras(NOMBRE_ARCHIVO);
         int opcion;
         
+        do {
+            System.out.println("----- MENÚ -----");
+            System.out.println("1. Verificar archivo");
+            System.out.println("2. Llenar archivo con palabras");
+            System.out.println("3. Borrar archivo");
+            System.out.println("4. Jugar");
+            System.out.println("5. Salir");
+            System.out.print("Elige una opción: ");
+            opcion = sc.nextInt();
+            sc.nextLine(); // limpiar buffer
+
+            switch(opcion) {
+                case 1:
+                    verificarArchivo(archivo);
+                    break;
+                case 2:
+                    llenarArchivo(archivo, sc);
+                    break;
+                case 3:
+                    archivo.borrarArchivo();
+                    break;
+                case 4:
+                    jugar(archivo);
+                    break;
+                case 5:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida.");
+            }
+        } while(opcion != 5);
+
+        sc.close();
     
     }
+    
 	
 
 	public static void main(String[] args) {
